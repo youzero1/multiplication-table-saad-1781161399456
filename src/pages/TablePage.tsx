@@ -37,11 +37,11 @@ export default function TablePage() {
     searchBNum <= 9;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-red-950 to-gray-950 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-violet-950 to-gray-950 p-4 md:p-8">
       {/* Header */}
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-rose-400 to-orange-400 mb-2">
+          <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 mb-2">
             Table of 9×9
           </h1>
           <p className="text-gray-400 text-lg">Interactive Multiplication Table</p>
@@ -50,13 +50,13 @@ export default function TablePage() {
         {/* Controls */}
         <div className="flex flex-col sm:flex-row gap-4 mb-8 items-center justify-between">
           {/* View Toggle */}
-          <div className="flex gap-2 bg-gray-900 p-1 rounded-xl border border-red-900">
+          <div className="flex gap-2 bg-gray-900 p-1 rounded-xl border border-violet-900">
             <button
               onClick={() => setViewMode('full')}
               className={clsx(
                 'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all',
                 viewMode === 'full'
-                  ? 'bg-red-600 text-white shadow-lg shadow-red-500/30'
+                  ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/30'
                   : 'text-gray-400 hover:text-white'
               )}
             >
@@ -68,7 +68,7 @@ export default function TablePage() {
               className={clsx(
                 'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all',
                 viewMode === 'single'
-                  ? 'bg-red-600 text-white shadow-lg shadow-red-500/30'
+                  ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/30'
                   : 'text-gray-400 hover:text-white'
               )}
             >
@@ -78,8 +78,8 @@ export default function TablePage() {
           </div>
 
           {/* Search */}
-          <div className="flex items-center gap-2 bg-gray-900 border border-red-900 rounded-xl px-4 py-2">
-            <Search size={16} className="text-red-400" />
+          <div className="flex items-center gap-2 bg-gray-900 border border-violet-900 rounded-xl px-4 py-2">
+            <Search size={16} className="text-violet-400" />
             <input
               type="number"
               min={1}
@@ -100,7 +100,7 @@ export default function TablePage() {
               className="w-20 bg-transparent text-white text-sm outline-none placeholder-gray-600"
             />
             {searchValid && searchResult !== null && (
-              <span className="ml-2 text-red-400 font-bold text-sm">
+              <span className="ml-2 text-violet-400 font-bold text-sm">
                 = {searchResult}
               </span>
             )}
@@ -117,7 +117,7 @@ export default function TablePage() {
                 className={clsx(
                   'w-10 h-10 rounded-lg font-bold text-sm transition-all',
                   selectedNumber === n
-                    ? 'bg-red-600 text-white shadow-lg shadow-red-500/30 scale-110'
+                    ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/30 scale-110'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
                 )}
               >
@@ -129,12 +129,12 @@ export default function TablePage() {
 
         {/* Full Table */}
         {viewMode === 'full' && (
-          <div className="overflow-x-auto rounded-2xl border border-red-900 shadow-2xl">
+          <div className="overflow-x-auto rounded-2xl border border-violet-900 shadow-2xl">
             <table className="w-full border-collapse">
               <thead>
                 <tr>
                   <th className="bg-gray-900 p-3 text-center">
-                    <span className="text-red-400 font-black text-lg">×</span>
+                    <span className="text-violet-400 font-black text-lg">×</span>
                   </th>
                   {numbers.map((col) => (
                     <th
@@ -142,8 +142,8 @@ export default function TablePage() {
                       className={clsx(
                         'p-3 text-center font-bold text-sm transition-colors',
                         isHighlightedCol(col)
-                          ? 'bg-red-600 text-white'
-                          : 'bg-gray-900 text-red-300 hover:bg-gray-800'
+                          ? 'bg-violet-600 text-white'
+                          : 'bg-gray-900 text-violet-300 hover:bg-gray-800'
                       )}
                     >
                       {col}
@@ -158,8 +158,8 @@ export default function TablePage() {
                       className={clsx(
                         'p-3 text-center font-bold text-sm transition-colors',
                         isHighlightedRow(row)
-                          ? 'bg-red-600 text-white'
-                          : 'bg-gray-900 text-red-300'
+                          ? 'bg-violet-600 text-white'
+                          : 'bg-gray-900 text-violet-300'
                       )}
                     >
                       {row}
@@ -183,11 +183,11 @@ export default function TablePage() {
                           className={clsx(
                             'p-3 text-center text-sm font-semibold cursor-pointer transition-all select-none',
                             isActive
-                              ? 'bg-gradient-to-br from-red-500 to-rose-600 text-white scale-105 rounded-lg shadow-lg shadow-red-500/40 text-base font-black z-10 relative'
+                              ? 'bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white scale-105 rounded-lg shadow-lg shadow-violet-500/40 text-base font-black z-10 relative'
                               : isSearchMatch
-                              ? 'bg-orange-600/80 text-white font-black'
+                              ? 'bg-fuchsia-600/80 text-white font-black'
                               : isRowOrCol
-                              ? 'bg-red-900/60 text-red-200'
+                              ? 'bg-violet-900/60 text-violet-200'
                               : result % 2 === 0
                               ? 'bg-gray-900 text-gray-300 hover:bg-gray-800'
                               : 'bg-gray-950 text-gray-400 hover:bg-gray-800'
@@ -207,13 +207,13 @@ export default function TablePage() {
         {/* Single Table View */}
         {viewMode === 'single' && (
           <div className="max-w-md mx-auto">
-            <div className="bg-gray-900 border border-red-900 rounded-2xl overflow-hidden shadow-2xl">
-              <div className="bg-gradient-to-r from-red-600 to-rose-600 px-6 py-4 text-center">
+            <div className="bg-gray-900 border border-violet-900 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-4 text-center">
                 <h2 className="text-3xl font-black text-white">
                   Table of {selectedNumber}
                 </h2>
               </div>
-              <div className="divide-y divide-red-900/40">
+              <div className="divide-y divide-violet-900/40">
                 {numbers.map((multiplier) => {
                   const result = selectedNumber * multiplier;
                   const isSearchMatch =
@@ -226,16 +226,16 @@ export default function TablePage() {
                       className={clsx(
                         'flex items-center justify-between px-6 py-4 transition-colors',
                         isSearchMatch
-                          ? 'bg-orange-900/40 border-l-4 border-orange-500'
-                          : 'hover:bg-red-900/20'
+                          ? 'bg-fuchsia-900/40 border-l-4 border-fuchsia-500'
+                          : 'hover:bg-violet-900/20'
                       )}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="w-8 h-8 rounded-lg bg-red-600/30 text-red-300 flex items-center justify-center text-sm font-bold">
+                        <span className="w-8 h-8 rounded-lg bg-violet-600/30 text-violet-300 flex items-center justify-center text-sm font-bold">
                           {selectedNumber}
                         </span>
                         <span className="text-gray-400 font-bold">×</span>
-                        <span className="w-8 h-8 rounded-lg bg-rose-600/30 text-rose-300 flex items-center justify-center text-sm font-bold">
+                        <span className="w-8 h-8 rounded-lg bg-fuchsia-600/30 text-fuchsia-300 flex items-center justify-center text-sm font-bold">
                           {multiplier}
                         </span>
                       </div>
@@ -245,8 +245,8 @@ export default function TablePage() {
                           className={clsx(
                             'text-2xl font-black',
                             isSearchMatch
-                              ? 'text-orange-400'
-                              : 'text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-rose-400'
+                              ? 'text-fuchsia-400'
+                              : 'text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400'
                           )}
                         >
                           {result}
@@ -265,17 +265,17 @@ export default function TablePage() {
           {viewMode === 'full' && (
             <>
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-red-900/60"></div>
+                <div className="w-4 h-4 rounded bg-violet-900/60"></div>
                 <span>Hover row/column highlight</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded bg-gradient-to-br from-red-500 to-rose-600"></div>
+                <div className="w-4 h-4 rounded bg-gradient-to-br from-violet-500 to-fuchsia-600"></div>
                 <span>Active cell</span>
               </div>
             </>
           )}
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-orange-600"></div>
+            <div className="w-4 h-4 rounded bg-fuchsia-600"></div>
             <span>Search result</span>
           </div>
         </div>
